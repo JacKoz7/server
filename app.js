@@ -1,7 +1,7 @@
-const http = require('http'); // import files to node.js
+const http = require('http'); 
 
-const server = http.createServer((req, res) => {
-    console.log(req);
-}); // node will execute this function whenever request reaches our server (ex. we type localhost:3000 in our browser)
+const routes = require('./routes');
 
-server.listen(3000); // port 3000
+const server = http.createServer(routes.handler);
+
+server.listen(3000); 
