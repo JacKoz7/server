@@ -5,12 +5,13 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-const adminRoutes = require('./routes/admin');
+const adminData = require('./routes/admin');
 const actionRoutes = require('./routes/action');
 
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public'))); // handle css paths for browser
 
-app.use(adminRoutes);
+app.use(adminData.routes);
 app.use(actionRoutes);
 
 app.use((req, res, next) => {
